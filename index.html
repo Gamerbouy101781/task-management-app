@@ -1,71 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inertia - Modern To-Do App</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <script type="importmap">
-    {
-        "imports": {
-            "sortablejs": "https://cdn.jsdelivr.net/npm/sortablejs@1.15.2/modular/sortable.esm.js"
-        }
-    }
-    </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Taskly – Organize. Prioritize. Conquer.</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="app-container">
-        <header class="app-header">
-            <h1>Taskly</h1>
-            <p>Your tasks, your way.</p>
-        </header>
+<div class="container">
+    <h1>Taskly</h1>
+    <h4 style="text-align: center; margin:0 0 1.5rem 0; font-family:Verdana, Geneva, Tahoma, sans-serif;">Your task, your way</h4>
+  <form id="task-form">
+    <input type="text" id="task-input" placeholder="Enter a new task" required>
+    <select id="priority">
+      <option value="low">Low</option>
+      <option value="medium" selected>Medium</option>
+      <option value="high">High</option>
+    </select>
+    <button type="submit">Add Task</button>
+  </form>
 
-        <main>
-            <form id="task-form" class="task-form">
-                <div class="input-wrapper">
-                    <input type="text" id="task-input" placeholder="e.g., design a new landing page" required autocomplete="off">
-                    <div class="priority-selector">
-                        <label for="priority-select" class="sr-only">Priority</label>
-                        <select id="priority-select">
-                            <option value="low">Low</option>
-                            <option value="medium" selected>Medium</option>
-                            <option value="high">High</option>
-                        </select>
-                    </div>
-                </div>
-                <button type="submit" aria-label="Add Task">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                    <span>Add Task</span>
-                </button>
-            </form>
+  <div class="filters">
+    <button data-filter="all" class="active">All</button>
+    <button data-filter="completed">Completed</button>
+    <button data-filter="low">Low</button>
+    <button data-filter="medium">Medium</button>
+    <button data-filter="high">High</button>
+  </div>
 
-            <div class="filter-controls">
-                <label for="filter-select" class="sr-only">Filter tasks</label>
-                <select id="filter-select">
-                    <option value="all">All Tasks</option>
-                    <option value="active">Active</option>
-                    <option value="completed">Completed</option>
-                    <option value="priority-high">Priority: High</option>
-                    <option value="priority-medium">Priority: Medium</option>
-                    <option value="priority-low">Priority: Low</option>
-                </select>
-                <div id="task-counter"></div>
-            </div>
+  <ul class="task-list" id="task-list"></ul>
+</div>
 
-            <ul id="task-list" class="task-list">
-                <!-- Tasks will be dynamically inserted here -->
-            </ul>
-             <p id="empty-state" class="empty-state hidden">
-                <img src="empty_state.png" alt="No tasks yet">
-                You're all caught up!
-            </p>
-        </main>
-    </div>
-
-    <script src="script.js" type="module"></script>
+<script src="script.js"></script>
 </body>
 </html>
-
